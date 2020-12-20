@@ -3,6 +3,7 @@ package com.ectario.generapp
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.widget.RelativeLayout
 import android.widget.TextView
@@ -16,7 +17,26 @@ class FirstPageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_firstpage)
+        var credit_textview = findViewById<RelativeLayout>(R.id.firstpage_credits)
+        var welcome_textview = findViewById<TextView>(R.id.firstpage_welcometext)
+        var introduction = Handler()
+        credit_textview.visibility = View.INVISIBLE
+        welcome_textview.visibility = View.INVISIBLE
 
+        introduction.postDelayed(
+                {
+                    welcome_textview.visibility = View.VISIBLE
+                    YoYo.with(Techniques.FadeIn)
+                            .onEnd {
+                                credit_textview.visibility = View.VISIBLE
+                                YoYo.with(Techniques.FadeIn)
+                                        .duration(700)
+                                        .playOn(credit_textview)
+                            }
+                            .duration(1700)
+                            .playOn(welcome_textview)
+                }
+                ,1000)
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
