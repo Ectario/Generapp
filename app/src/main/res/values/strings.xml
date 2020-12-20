@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Generapp</string>
+    <string name="welcometext">Generapp</string>
+    <string name="dev_name">Ectario <b>alias</b> Dimitri Carlier</string>
 </resources>

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Text size -->
-        <!-- MenuActivity -->
-    <dimen name="size_btnSettings_MenuActivity">23sp</dimen>
-    <dimen name="size_btnPlay_MenuActivity">80sp</dimen>
-    <dimen name="size_btnMute_MenuActivity">23sp</dimen>
+        <!-- FirstPage -->
+    <dimen name="size_welcome_text">50sp</dimen>
+    <dimen name="size_credit_text">23sp</dimen>
 
     <!-- Margin size -->
-        <!-- MenuActivity -->
-    <dimen name="marginTop_btnSettings_MenuActivity">50dp</dimen>
-    <dimen name="marginBottom_btnPlay_MenuActivity">50dp</dimen>
-    <dimen name="marginTop_btnMute_MenuActivity">150dp</dimen>
+        <!-- FirstPage -->
+    <dimen name="marginTop_welcome_text">250dp</dimen>
+    <dimen name="marginBottom_credit_text">250dp</dimen>
+    <dimen name="marginTop_credit_text">50sp</dimen>
 
     <!--Padding size -->
-        <!-- MenuActivity -->
-    <dimen name="padding_MenuActivity">15dp</dimen>
+        <!-- FirstPage -->
+
+        <!-- None -->
 
 </resources>
