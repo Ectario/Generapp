@@ -18,7 +18,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/firstpage_credits"
-        android:layout_marginBottom="@dimen/marginBottom_credit_text"
+        android:layout_below="@id/firstpage_welcometext"
+        android:layout_marginTop="@dimen/marginTop_credit_text"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true">
         <TextView
@@ -32,7 +33,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/marginTop_credit_text"
+            android:layout_marginTop="@dimen/marginTopBetweenLine_credit_text"
             android:text="@string/dev_name"
             android:textColor="@color/white"
             android:textSize="@dimen/size_credit_text"

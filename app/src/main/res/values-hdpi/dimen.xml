@@ -9,7 +9,8 @@
         <!-- FirstPage -->
     <dimen name="marginTop_welcome_text">250dp</dimen>
     <dimen name="marginBottom_credit_text">250dp</dimen>
-    <dimen name="marginTop_credit_text">50sp</dimen>
+    <dimen name="marginTop_credit_text">60dp</dimen>
+    <dimen name="marginTopBetweenLine_credit_text">50dp</dimen>
 
     <!--Padding size -->
         <!-- FirstPage -->

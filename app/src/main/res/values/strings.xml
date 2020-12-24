@@ -2,4 +2,6 @@
     <string name="app_name">Generapp</string>
     <string name="welcometext">Generapp</string>
     <string name="dev_name">Ectario <b>alias</b> Dimitri Carlier</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

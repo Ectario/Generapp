@@ -1,44 +1,61 @@
 package com.ectario.generapp
 
-import android.annotation.SuppressLint
-import android.content.Intent
+import android.content.res.Resources
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
+import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.marginBottom
+import androidx.core.view.marginLeft
+import androidx.core.view.marginRight
 import com.daimajia.androidanimations.library.Techniques
 import com.daimajia.androidanimations.library.YoYo
-import com.plattysoft.leonids.ParticleSystem
 
 
 class FirstPageActivity : AppCompatActivity() {
+    private val MARGINTOP_COEF = 0.25 //Use like percentage
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_firstpage)
+        setContentView(R.layout.layout_firstpage)
         var credit_textview = findViewById<RelativeLayout>(R.id.firstpage_credits)
         var welcome_textview = findViewById<TextView>(R.id.firstpage_welcometext)
-        var introduction = Handler()
+
+        var param = welcome_textview.layoutParams as ViewGroup.MarginLayoutParams
+        param.setMargins(welcome_textview.marginLeft,
+                (Resources.getSystem().displayMetrics.heightPixels * MARGINTOP_COEF).toInt(),
+                welcome_textview.marginRight,
+                welcome_textview.marginBottom)
+        welcome_textview.layoutParams = param
+
+        var handler = Handler()
         credit_textview.visibility = View.INVISIBLE
         welcome_textview.visibility = View.INVISIBLE
 
-        introduction.postDelayed(
+        handler.postDelayed(
                 {
                     welcome_textview.visibility = View.VISIBLE
                     YoYo.with(Techniques.FadeIn)
-                            .onEnd {
-                                credit_textview.visibility = View.VISIBLE
-                                YoYo.with(Techniques.FadeIn)
-                                        .duration(700)
-                                        .playOn(credit_textview)
-                            }
-                            .duration(1700)
+                            .duration(1200)
                             .playOn(welcome_textview)
                 }
-                ,1000)
+                ,500)
+
+        handler.postDelayed(
+                {
+                    credit_textview.visibility = View.VISIBLE
+                    YoYo.with(Techniques.FadeIn)
+                            .duration(1000)
+                            .playOn(credit_textview)
+                }
+                , 700)
+
     }
 
+
+    // FULLSCREEN METHODS BELOW
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
         if (hasFocus) hideSystemUI()
