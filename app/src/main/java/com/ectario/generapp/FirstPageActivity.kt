@@ -1,6 +1,5 @@
 package com.ectario.generapp
 
-import android.content.res.Resources
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
@@ -8,27 +7,22 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.marginBottom
-import androidx.core.view.marginLeft
-import androidx.core.view.marginRight
 import com.daimajia.androidanimations.library.Techniques
 import com.daimajia.androidanimations.library.YoYo
+import com.ectario.generapp.tools.getScreenHeight
+import com.ectario.generapp.tools.setMargins
 
 
 class FirstPageActivity : AppCompatActivity() {
     private val MARGINTOP_COEF = 0.25 //Use like percentage
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_firstpage)
         var credit_textview = findViewById<RelativeLayout>(R.id.firstpage_credits)
         var welcome_textview = findViewById<TextView>(R.id.firstpage_welcometext)
 
-        var param = welcome_textview.layoutParams as ViewGroup.MarginLayoutParams
-        param.setMargins(welcome_textview.marginLeft,
-                (Resources.getSystem().displayMetrics.heightPixels * MARGINTOP_COEF).toInt(),
-                welcome_textview.marginRight,
-                welcome_textview.marginBottom)
-        welcome_textview.layoutParams = param
+        welcome_textview.setMargins(top = (getScreenHeight() * MARGINTOP_COEF).toInt())
 
         var handler = Handler()
         credit_textview.visibility = View.INVISIBLE
