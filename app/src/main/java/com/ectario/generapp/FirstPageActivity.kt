@@ -1,5 +1,6 @@
 package com.ectario.generapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
@@ -7,8 +8,10 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
 import com.daimajia.androidanimations.library.Techniques
 import com.daimajia.androidanimations.library.YoYo
+import com.ectario.generapp.tools.changingActivity
 import com.ectario.generapp.tools.getScreenHeight
 import com.ectario.generapp.tools.setMargins
 
@@ -21,6 +24,7 @@ class FirstPageActivity : AppCompatActivity() {
         setContentView(R.layout.layout_firstpage)
         var credit_textview = findViewById<RelativeLayout>(R.id.firstpage_credits)
         var welcome_textview = findViewById<TextView>(R.id.firstpage_welcometext)
+        var first_pageview = findViewById<ViewGroup>(R.id.first_page_id)
 
         welcome_textview.setMargins(top = (getScreenHeight() * MARGINTOP_COEF).toInt())
 
@@ -45,7 +49,7 @@ class FirstPageActivity : AppCompatActivity() {
                             .playOn(credit_textview)
                 }
                 , 700)
-
+        first_pageview.setOnClickListener { changingActivity(this, HomePageActivity::class.java) }
     }
 
 
