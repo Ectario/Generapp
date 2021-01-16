@@ -7,6 +7,7 @@ import android.view.View
 class HomePageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        overridePendingTransition(R.anim.swap_activity_fadein, R.anim.swap_activity_fadeout)
         setContentView(R.layout.layout_home_page)
     }
 
