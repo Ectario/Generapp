@@ -17,7 +17,7 @@ import com.ectario.generapp.tools.setMargins
 
 
 class FirstPageActivity : AppCompatActivity() {
-    private val MARGINTOP_COEF = 0.25 //Use like percentage
+    private val mMARGINTOP_COEF = 0.25 //Use like percentage
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +26,7 @@ class FirstPageActivity : AppCompatActivity() {
         var welcome_textview = findViewById<TextView>(R.id.firstpage_welcometext)
         var first_pageview = findViewById<ViewGroup>(R.id.first_page_id)
 
-        welcome_textview.setMargins(top = (getScreenHeight() * MARGINTOP_COEF).toInt())
+        welcome_textview.setMargins(top = (getScreenHeight() * mMARGINTOP_COEF).toInt())
 
         var handler = Handler()
         credit_textview.visibility = View.INVISIBLE

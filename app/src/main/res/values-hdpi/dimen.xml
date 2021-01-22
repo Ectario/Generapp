@@ -12,6 +12,12 @@
     <dimen name="marginTop_credit_text">60dp</dimen>
     <dimen name="marginTopBetweenLine_credit_text">50dp</dimen>
 
+        <!-- HomePage -->
+
+    <dimen name="marginTop_sizing">310dp</dimen>
+
+
+
     <!--Padding size -->
         <!-- FirstPage -->
 

@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Text size -->
-    <!-- FirstPage -->
-    <dimen name="size_welcome_text">70sp</dimen>
-    <dimen name="size_credit_text">35sp</dimen>
+        <!-- FirstPage -->
+        <dimen name="size_welcome_text">70sp</dimen>
+        <dimen name="size_credit_text">35sp</dimen>
 
     <!-- Margin size -->
-    <!-- FirstPage -->
-    <dimen name="marginTop_welcome_text">350dp</dimen>
-    <dimen name="marginBottom_credit_text">350dp</dimen>
-    <dimen name="marginTop_credit_text">150dp</dimen>
-    <dimen name="marginTopBetweenLine_credit_text">50dp</dimen>
+        <!-- FirstPage -->
+        <dimen name="marginTop_welcome_text">350dp</dimen>
+        <dimen name="marginBottom_credit_text">350dp</dimen>
+        <dimen name="marginTop_credit_text">150dp</dimen>
+        <dimen name="marginTopBetweenLine_credit_text">50dp</dimen>
+
+        <!-- HomePage -->
+        <dimen name="marginTop_sizing">310dp</dimen>
 
     <!--Padding size -->
     <!-- FirstPage -->

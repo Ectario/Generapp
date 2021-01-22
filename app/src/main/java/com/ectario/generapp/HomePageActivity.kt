@@ -2,13 +2,28 @@ package com.ectario.generapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.TextureView
 import android.view.View
+import android.widget.Button
+import android.widget.TextView
+import com.ectario.generapp.tools.getScreenHeight
+import com.ectario.generapp.tools.setMargins
 
 class HomePageActivity : AppCompatActivity() {
+    private val mMARGINTOP_COEF = 0.25f
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         overridePendingTransition(R.anim.swap_activity_fadein, R.anim.swap_activity_fadeout)
         setContentView(R.layout.layout_home_page)
+        var size_textview = findViewById<TextView>(R.id.sizeId)
+        var generation_button = findViewById<Button>(R.id.generationBtnId)
+        size_textview.setMargins(top = (getScreenHeight() * mMARGINTOP_COEF).toInt())
+        generation_button.setOnClickListener { it.animate().rotationX(720f)
+                                                           .scaleXBy(4f)
+                                                           .alpha(0f)
+
+        }
+
     }
 
 
