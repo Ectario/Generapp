@@ -59,4 +59,17 @@
         android:background="@drawable/custom_button_cyan_rect"
         />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/generatePassword"
+        android:text=""
+        android:textSize="@dimen/size_welcome_text"
+        android:layout_below="@id/sizeId"
+        android:layout_centerHorizontal="true"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:padding="15sp"
+        />
+
 </RelativeLayout>
