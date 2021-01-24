@@ -7,6 +7,8 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import com.daimajia.androidanimations.library.Techniques
+import com.daimajia.androidanimations.library.YoYo
 import com.ectario.generapp.hash.WordsHasher
 import com.ectario.generapp.tools.getScreenHeight
 import com.ectario.generapp.tools.makeToast
@@ -25,15 +27,17 @@ class HomePageActivity : AppCompatActivity() {
         var size_textview = findViewById<TextView>(R.id.sizeId)
         var generation_button = findViewById<Button>(R.id.generationBtnId)
         size_textview.setMargins(top = (getScreenHeight() * mMARGINTOP_COEF).toInt())
+
         generation_button.setOnClickListener {
-            it.animate().rotationX(720f)
-                    .scaleXBy(4f)
-                    .alpha(0f)
-            var l = ArrayList<String?>()
-            l.add("test")
-            l.add("test1")
-            l.add("test2")
-            var wh : WordsHasher = WordsHasher(l)
+            YoYo.with(Techniques.RotateOut)
+                    .duration(200)
+                    .onEnd {
+                        YoYo.with(Techniques.RotateIn)
+                                .duration(200)
+                                .playOn(generation_button)
+                    }
+                    .playOn(it)
+            var wh = WordsHasher()
             makeToast(wh.getPasswordHashed())
             findViewById<TextView>(R.id.generatePassword).text = wh.getPasswordHashed()
         }

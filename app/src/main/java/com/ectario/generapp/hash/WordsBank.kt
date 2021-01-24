@@ -2,7 +2,7 @@ package com.ectario.generapp.hash
 
 open class WordsBank {
     protected var list : ArrayList<String?>?
-    protected var lengthPassword : Int = 0
+    protected var lengthWordsBank : Int = 0
 
     constructor(listOfWords: ArrayList<String?>? = null, lenghtPasswordArg : Int = 0){
         var lengthPassword = lenghtPasswordArg
@@ -13,11 +13,11 @@ open class WordsBank {
             }
         }
         if (lengthPassword< cpt) lengthPassword = cpt
-        this.lengthPassword = lengthPassword
+        this.lengthWordsBank = lengthPassword
         this.list = listOfWords
     }
 
     fun getLength() : Int {
-        return this.lengthPassword
+        return this.lengthWordsBank
     }
 }
