@@ -45,14 +45,22 @@ class HomePageActivity : AppCompatActivity() {
         }
 
         plusBtn.setOnClickListener {
+            YoYo.with(Techniques.RubberBand)
+                    .duration(200)
+                    .playOn(it)
             mLengthPwd++
             size_textview.text = "size : $mLengthPwd"
+
         }
 
         minusBtn.setOnClickListener {
+            YoYo.with(Techniques.RubberBand)
+                    .duration(200)
+                    .playOn(it)
             mLengthPwd--
             if(mLengthPwd<=0) { mLengthPwd = 0; size_textview.text = "Random size" }
             else size_textview.text = "size : $mLengthPwd"
+
         }
     }
 
