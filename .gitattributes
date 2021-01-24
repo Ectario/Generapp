@@ -1,0 +1,4 @@
+*.kt linguist-detectable=true
+*.xml linguist-detectable=true
+*.java linguist-detectable=true
+*.gradle linguist-detectable=true
