@@ -17,7 +17,7 @@ import com.ectario.generapp.tools.setMargins
 
 class HomePageActivity : AppCompatActivity() {
     private val mMARGINTOP_COEF = 0.25f
-
+    private var mLengthPwd = 0
     init { INSTANCE = this }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +25,8 @@ class HomePageActivity : AppCompatActivity() {
         overridePendingTransition(R.anim.swap_activity_fadein, R.anim.swap_activity_fadeout)
         setContentView(R.layout.layout_home_page)
         var size_textview = findViewById<TextView>(R.id.sizeId)
+        var plusBtn = findViewById<Button>(R.id.plusBtnId)
+        var minusBtn = findViewById<Button>(R.id.minusBtnId)
         var generation_button = findViewById<Button>(R.id.generationBtnId)
         size_textview.setMargins(top = (getScreenHeight() * mMARGINTOP_COEF).toInt())
 
@@ -37,9 +39,20 @@ class HomePageActivity : AppCompatActivity() {
                                 .playOn(generation_button)
                     }
                     .playOn(it)
-            var wh = WordsHasher()
+            var wh = WordsHasher(lenghtPasswordArg = mLengthPwd)
             makeToast(wh.getPasswordHashed())
             findViewById<TextView>(R.id.generatePassword).text = wh.getPasswordHashed()
+        }
+
+        plusBtn.setOnClickListener {
+            mLengthPwd++
+            size_textview.text = "size : $mLengthPwd"
+        }
+
+        minusBtn.setOnClickListener {
+            mLengthPwd--
+            if(mLengthPwd<=0) { mLengthPwd = 0; size_textview.text = "Random size" }
+            else size_textview.text = "size : $mLengthPwd"
         }
     }
 
