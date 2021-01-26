@@ -10,6 +10,7 @@ import android.widget.Toast
 import com.daimajia.androidanimations.library.Techniques
 import com.daimajia.androidanimations.library.YoYo
 import com.ectario.generapp.hash.WordsHasher
+import com.ectario.generapp.tools.OnSwipeTouchListener
 import com.ectario.generapp.tools.getScreenHeight
 import com.ectario.generapp.tools.makeToast
 import com.ectario.generapp.tools.setMargins
@@ -62,6 +63,25 @@ class HomePageActivity : AppCompatActivity() {
             else size_textview.text = "size : $mLengthPwd"
 
         }
+
+        findViewById<View>(R.id.home_page_id).setOnTouchListener(object : OnSwipeTouchListener(applicationContext){
+            override fun onSwipeRight() {
+                super.onSwipeRight()
+                makeToast("swipe right")
+            }
+            override fun onSwipeLeft() {
+                super.onSwipeRight()
+                makeToast("swipe left")
+            }
+            override fun onSwipeUp() {
+                super.onSwipeRight()
+                makeToast("swipe up")
+            }
+            override fun onSwipeDown() {
+                super.onSwipeRight()
+                makeToast("swipe down")
+            }
+        })
     }
 
 
