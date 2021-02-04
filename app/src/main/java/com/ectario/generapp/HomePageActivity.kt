@@ -1,89 +1,107 @@
 package com.ectario.generapp
 
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.view.View
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
-import com.daimajia.androidanimations.library.Techniques
-import com.daimajia.androidanimations.library.YoYo
-import com.ectario.generapp.hash.WordsHasher
-import com.ectario.generapp.tools.OnSwipeTouchListener
-import com.ectario.generapp.tools.getScreenHeight
-import com.ectario.generapp.tools.makeToast
-import com.ectario.generapp.tools.setMargins
-
+import androidx.appcompat.app.ActionBarDrawerToggle
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.navigation.NavigationView
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
+import androidx.navigation.NavController
 
 class HomePageActivity : AppCompatActivity() {
-    private val mMARGINTOP_COEF = 0.25f
-    private var mLengthPwd = 0
+
+    private lateinit var toolbar: Toolbar
+    private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var navView: NavigationView
+    private lateinit var navController: NavController
+    private lateinit var toggle: ActionBarDrawerToggle
+
     init { INSTANCE = this }
+
+    companion object {
+
+        lateinit var INSTANCE: HomePageActivity
+            private set
+
+        val applicationContext: Context get() { return INSTANCE.applicationContext }
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         overridePendingTransition(R.anim.swap_activity_fadein, R.anim.swap_activity_fadeout)
-        setContentView(R.layout.layout_home_page)
-        var size_textview = findViewById<TextView>(R.id.sizeId)
-        var plusBtn = findViewById<Button>(R.id.plusBtnId)
-        var minusBtn = findViewById<Button>(R.id.minusBtnId)
-        var generation_button = findViewById<Button>(R.id.generationBtnId)
-        size_textview.setMargins(top = (getScreenHeight() * mMARGINTOP_COEF).toInt())
+        setContentView(R.layout.navigation_view_left)
 
-        generation_button.setOnClickListener {
-            YoYo.with(Techniques.RotateOut)
-                    .duration(200)
-                    .onEnd {
-                        YoYo.with(Techniques.RotateIn)
-                                .duration(200)
-                                .playOn(generation_button)
-                    }
-                    .playOn(it)
-            var wh = WordsHasher(lenghtPasswordArg = mLengthPwd)
-            makeToast(wh.getPasswordHashed())
-            findViewById<TextView>(R.id.generatePassword).text = wh.getPasswordHashed()
-        }
+        //UI initialisation
 
-        plusBtn.setOnClickListener {
-            YoYo.with(Techniques.RubberBand)
-                    .duration(200)
-                    .playOn(it)
-            mLengthPwd++
-            size_textview.text = "size : $mLengthPwd"
+        toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
 
-        }
+        drawerLayout = findViewById(R.id.drawer_layout)
+        navView = findViewById(R.id.nav_view)
+        //the line below to color icon in navigation view
+        navView.itemIconTintList = null
 
-        minusBtn.setOnClickListener {
-            YoYo.with(Techniques.RubberBand)
-                    .duration(200)
-                    .playOn(it)
-            mLengthPwd--
-            if(mLengthPwd<=0) { mLengthPwd = 0; size_textview.text = "Random size" }
-            else size_textview.text = "size : $mLengthPwd"
+        navController = findNavController(R.id.nav_host_fragment)
 
-        }
+        toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        drawerLayout.addDrawerListener(toggle)
 
-        findViewById<View>(R.id.home_page_id).setOnTouchListener(object : OnSwipeTouchListener(applicationContext){
-            override fun onSwipeRight() {
-                super.onSwipeRight()
-                makeToast("swipe right")
-            }
-            override fun onSwipeLeft() {
-                super.onSwipeRight()
-                makeToast("swipe left")
-            }
-            override fun onSwipeUp() {
-                super.onSwipeRight()
-                makeToast("swipe up")
-            }
-            override fun onSwipeDown() {
-                super.onSwipeRight()
-                makeToast("swipe down")
-            }
-        })
+        /*val generateBtn: FloatingActionButton = findViewById(R.id.generationBtnId)
+        generateBtn.setOnClickListener { view ->
+            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_SHORT)
+                .setAction("Action", null).show()
+        }*/
+
+        appBarConfiguration = AppBarConfiguration(setOf(R.id.nav_home, R.id.nav_historic, R.id.nav_rules_settings), drawerLayout)
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
     }
 
+    override fun onPostCreate(savedInstanceState: Bundle?) {
+        toggle.syncState()
+        super.onPostCreate(savedInstanceState)
+    }
+
+    override fun onResumeFragments() {
+        toggle.syncState()
+        super.onResumeFragments()
+    }
+
+    override fun onUserInteraction() {
+        toggle.syncState()
+        super.onUserInteraction()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.general_home_page, menu)
+        return true
+    }
+
+    override fun onBackPressed() {
+        if(drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START)
+        }
+        else super.onBackPressed()
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.nav_host_fragment)
+        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
 
     // FULLSCREEN METHODS BELOW
     override fun onWindowFocusChanged(hasFocus: Boolean) {
@@ -112,14 +130,5 @@ class HomePageActivity : AppCompatActivity() {
         window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                 or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                 or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
-    }
-
-    companion object {
-
-        lateinit var INSTANCE: HomePageActivity
-            private set
-
-        val applicationContext: Context get() { return INSTANCE.applicationContext }
-
     }
 }

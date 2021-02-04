@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeFragment">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/home_page_id"
+        tools:context=".HomePageActivity">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sizeId"
+            android:textSize="@dimen/size_welcome_text"
+            android:text="Size"
+            android:layout_marginTop="@dimen/marginTop_sizing"
+            android:layout_centerHorizontal="true"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:id="@+id/minusBtnId"
+            android:text="-"
+            android:textSize="@dimen/size_welcome_text"
+            android:textColor="@color/white"
+            android:background="@color/purple_500"
+            android:autoSizeTextType="uniform"
+            android:layout_alignTop="@id/sizeId"
+            android:layout_alignBottom="@id/sizeId"
+            android:layout_toLeftOf="@id/sizeId" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="15dp"
+            android:id="@+id/plusBtnId"
+            android:text="+"
+            android:textSize="@dimen/size_welcome_text"
+            android:textColor="@color/white"
+            android:background="@color/purple_500"
+            android:autoSizeTextType="uniform"
+            android:layout_alignTop="@id/sizeId"
+            android:layout_alignBottom="@id/sizeId"
+            android:layout_toRightOf="@id/sizeId"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/generatePassword"
+            android:text=""
+            android:textSize="@dimen/size_welcome_text"
+            android:layout_below="@id/sizeId"
+            android:layout_centerHorizontal="true"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:padding="15sp"
+            />
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

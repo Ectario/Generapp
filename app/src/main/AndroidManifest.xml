@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Generapp">
-        <activity android:name=".HomePageActivity" />
+        <activity
+            android:name=".HomePageActivity"
+            android:theme="@style/Theme.Generapp.NoActionBar"></activity>
         <activity
             android:name=".FirstPageActivity"
             android:screenOrientation="portrait">
