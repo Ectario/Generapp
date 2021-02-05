@@ -10,8 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Generapp">
         <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"></activity>
+        <activity
             android:name=".HomePageActivity"
-            android:theme="@style/Theme.Generapp.NoActionBar"></activity>
+            android:theme="@style/Theme.Generapp.NoActionBar" />
         <activity
             android:name=".FirstPageActivity"
             android:screenOrientation="portrait">
