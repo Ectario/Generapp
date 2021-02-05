@@ -11,7 +11,12 @@
         android:theme="@style/Theme.Generapp">
         <activity
             android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings"></activity>
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".HomePageActivity">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ectario.generapp.HomePageActivity" /></activity>
         <activity
             android:name=".HomePageActivity"
             android:theme="@style/Theme.Generapp.NoActionBar" />

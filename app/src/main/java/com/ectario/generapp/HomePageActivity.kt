@@ -1,8 +1,10 @@
 package com.ectario.generapp
 
+import android.content.ClipData
 import android.content.Context
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -15,9 +17,11 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.view.menu.MenuView
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
+import com.ectario.generapp.tools.changingActivity
 
 class HomePageActivity : AppCompatActivity() {
 
@@ -55,7 +59,6 @@ class HomePageActivity : AppCompatActivity() {
         navView.itemIconTintList = null
 
         navController = findNavController(R.id.nav_host_fragment)
-
         toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawerLayout.addDrawerListener(toggle)
 
@@ -64,11 +67,11 @@ class HomePageActivity : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_SHORT)
                 .setAction("Action", null).show()
         }*/
-
         appBarConfiguration = AppBarConfiguration(setOf(R.id.nav_home, R.id.nav_historic, R.id.nav_rules_settings), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
+
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
         toggle.syncState()
@@ -89,6 +92,30 @@ class HomePageActivity : AppCompatActivity() {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.general_home_page, menu)
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.general_settings -> {
+                // User chose the "Settings" item
+                changingActivity(this, SettingsActivity::class.java)
+                return true
+            }
+
+            //TO IMPLEMENT
+            /*R.id.action_favorite -> {
+                // User chose the "Favorite" action, mark the current item
+                // as a favorite...
+                true
+            }*/
+
+            else -> {
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                super.onOptionsItemSelected(item)
+                return false
+            }
+        }
     }
 
     override fun onBackPressed() {
