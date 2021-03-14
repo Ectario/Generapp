@@ -1,2 +1,2 @@
 # Generapp
-Generate your password, complex but easy to remember
+Generate your own password, complex but easy to remember
