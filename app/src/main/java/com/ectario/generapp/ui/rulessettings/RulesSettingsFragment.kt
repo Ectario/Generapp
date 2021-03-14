@@ -16,11 +16,4 @@ class RulesSettingsFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_rules_settings, container, false)
         return root
     }
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-
-        requireActivity().window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
-        requireActivity().window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
-
-    }
 }

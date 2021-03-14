@@ -17,11 +17,4 @@ class HistoricFragment : Fragment() {
         return root
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-
-        requireActivity().window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
-        requireActivity().window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
-
-    }
 }
