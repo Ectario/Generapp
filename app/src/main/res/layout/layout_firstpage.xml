@@ -39,5 +39,12 @@
             android:textColor="@color/white"
             android:textSize="@dimen/size_credit_text"
             />
+
     </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/settings_init"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
+
 </RelativeLayout>

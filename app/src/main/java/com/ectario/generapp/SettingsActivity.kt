@@ -2,8 +2,6 @@ package com.ectario.generapp
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.preference.EditTextPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
@@ -34,7 +32,7 @@ class SettingsActivity : AppCompatActivity() {
             val themePreferences = findPreference<SwitchPreferenceCompat>(getString(R.string.theme_header))
 
             themePreferences?.let { refreshTheme(it) }
-            
+
             themePreferences?.setOnPreferenceClickListener {
                 refreshTheme(it)
                 true

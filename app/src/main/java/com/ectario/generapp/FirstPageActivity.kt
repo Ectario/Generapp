@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.preference.Preference
+import androidx.preference.SwitchPreferenceCompat
 import com.daimajia.androidanimations.library.Techniques
 import com.daimajia.androidanimations.library.YoYo
 import com.ectario.generapp.tools.changingActivity
@@ -20,6 +22,15 @@ class FirstPageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_firstpage)
+
+        //To apply the settings preferences
+        if (savedInstanceState == null) {
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.settings_init, SettingsActivity.SettingsFragment())
+                .commit()
+        }
+
         var credit_textview = findViewById<RelativeLayout>(R.id.firstpage_credits)
         var welcome_textview = findViewById<TextView>(R.id.firstpage_welcometext)
         var first_pageview = findViewById<ViewGroup>(R.id.first_page_id)
