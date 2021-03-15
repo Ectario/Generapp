@@ -42,7 +42,6 @@
             android:layout_below="@id/sizeId"
             android:layout_centerHorizontal="true"
             android:textAllCaps="false"
-            android:textColor="@color/black"
             android:padding="15sp"
             />
 
