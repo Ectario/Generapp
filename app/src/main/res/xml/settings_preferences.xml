@@ -36,8 +36,8 @@
 
         <SwitchPreferenceCompat
             app:key="@string/theme_header"
-            app:summaryOff="@string/dark_theme"
-            app:summaryOn="@string/light_theme"
+            app:summaryOff="@string/light_theme"
+            app:summaryOn="@string/dark_theme"
             app:title="@string/theme_header" />
 
     </PreferenceCategory>

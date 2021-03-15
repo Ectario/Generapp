@@ -39,10 +39,10 @@ class SettingsActivity : AppCompatActivity() {
             }
         }
         private fun refreshTheme(pref : Preference){
-            if (!((pref as SwitchPreferenceCompat).isChecked)) {
+            if (((pref as SwitchPreferenceCompat).isChecked)) {
                 ThemeHelper.applyTheme("dark")
             }
-            if ((pref as SwitchPreferenceCompat).isChecked) {
+            if (!(pref as SwitchPreferenceCompat).isChecked) {
                 ThemeHelper.applyTheme("light")
             }
         }
