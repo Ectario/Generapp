@@ -14,6 +14,8 @@ import com.daimajia.androidanimations.library.YoYo
 import com.ectario.generapp.HomePageActivity.Companion.applicationContext
 import com.ectario.generapp.R
 import com.ectario.generapp.hash.WordsHasher
+import com.ectario.generapp.savemanagement.loadHistoric
+import com.ectario.generapp.savemanagement.saveHistoric
 import com.ectario.generapp.tools.OnSwipeTouchListener
 import com.ectario.generapp.tools.getScreenHeight
 import com.ectario.generapp.tools.makeToast
@@ -29,6 +31,7 @@ class HomeFragment : Fragment() {
     private lateinit var root : View
     private val mMARGINTOP_COEF = 0.25f
     private var mLengthPwd = 0
+    private var mHistoric : ArrayList<WordsHasher?>? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         root = inflater.inflate(R.layout.fragment_home, container, false)
@@ -41,6 +44,9 @@ class HomeFragment : Fragment() {
     }
 
     private fun instantiation(view : View = this.root){
+
+        mHistoric = loadHistoric(applicationContext)
+
         var sizeTextview = view.findViewById<TextView>(R.id.sizeId)
         var generationButton = view.findViewById<FloatingActionButton>(R.id.generationBtnId)
         var passwordTextview = view.findViewById<TextView>(R.id.generatePassword)
@@ -58,6 +64,8 @@ class HomeFragment : Fragment() {
             var wh = WordsHasher(lenghtPasswordArg = mLengthPwd)
             applicationContext.makeToast(wh.getPasswordHashed())
             passwordTextview.text = wh.getPasswordHashed()
+            mHistoric?.add(wh)
+            saveHistoric(applicationContext, mHistoric)
         }
 
         view.setOnTouchListener(object : OnSwipeTouchListener(applicationContext) {
@@ -83,47 +91,7 @@ class HomeFragment : Fragment() {
             }
         })
     }
-//    private fun saveHistoric() {
-//        val sharedPreferences: SharedPreferences? = activity?.applicationContext?.getSharedPreferences("shared preferences", Context.MODE_PRIVATE)
-//        val editor = sharedPreferences?.edit()
-//        val gson = Gson()
-//        val json = gson.toJson(mHistoric)
-//        editor?.putString("historic", json)
-//        editor?.apply()
-//    }
-//
-//    private fun loadHistoric() {
-//        val sharedPreferences: SharedPreferences? = activity?.applicationContext?.getSharedPreferences("shared preferences", Context.MODE_PRIVATE)
-//        val gson = Gson()
-//        val json = sharedPreferences?.getString("historic", null)
-//        val type: Type = object : TypeToken<ArrayList<WordsHasher?>>() {}.type
-//        mHistoric = if (json!=null) gson?.fromJson(json, type) else null
-//        if (mHistoric == null) {
-//            mHistoric = ArrayList()
-//        }
-//    }
 
 
-    private fun hideSystemUI() {
-        // Enables regular immersive mode.
-        // For "lean back" mode, remove SYSTEM_UI_FLAG_IMMERSIVE.
-        // Or for "sticky immersive," replace it with SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-        activity?.window?.decorView?.systemUiVisibility = (View.SYSTEM_UI_FLAG_IMMERSIVE
-                // Set the content to appear under the system bars so that the
-                // content doesn't resize when the system bars hide and show.
-                or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                // Hide the nav bar and status bar
-                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                or View.SYSTEM_UI_FLAG_FULLSCREEN)
-    }
 
-    // Shows the system bars by removing all the flags
-    // except for the ones that make the content appear under the system bars.
-    private fun showSystemUI() {
-        activity?.window?.decorView?.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
-    }
 }
