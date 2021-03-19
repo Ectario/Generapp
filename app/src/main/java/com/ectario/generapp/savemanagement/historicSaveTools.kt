@@ -30,13 +30,20 @@ fun loadHistoric(context: Context): ArrayList<WordsHasher?>? {
 }
 
 fun deleteOldHistoric(context: Context, deleteLimit : Int = 100, numberToDeleteArg : Int = 1): ArrayList<WordsHasher?>? { // AFTER the "deleteLimit" indice the function delete "numberToDelete" Object
-    var historic = loadHistoric(context)                                                                            // If the numberToDelete = -1 then delete all after the deleteLimit
+    var historic = loadHistoric(context)         // If the numberToDelete = -1 then delete all after the deleteLimit
+
     historic?.reverse()
+
     var size = historic?.size!!
     var numberToDelete = numberToDeleteArg
 
+    if (numberToDelete == 0 || deleteLimit == -1){
+        historic?.reverse()
+        return historic
+    }
 
     if (size-1 < deleteLimit){
+        historic?.reverse()
         return historic
     }
 
@@ -50,11 +57,13 @@ fun deleteOldHistoric(context: Context, deleteLimit : Int = 100, numberToDeleteA
         println(size)
         if (size-1 < deleteLimit){ //The size downgrade each removeAt so if the deleteLimit is too big that cut the delete and save/return
             println("STOPPED")
+            historic?.reverse()
             saveHistoric(context, historic)
             return historic
         }
         historic.removeAt(deleteLimit)
     }
+    historic?.reverse()
     saveHistoric(context, historic)
     return historic
 }

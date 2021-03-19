@@ -18,11 +18,19 @@
     <string name="messages_header">Messages</string>
     <string name="sync_header">Sync</string>
     <string name="theme_header">Theme</string>
+    <string name="historic_header">Historic Settings</string>
+    <string name="length_historic">Limited Historic Length</string>
 
     <!-- Messages Preferences -->
     <string name="signature_title">Ectario</string>
     <string name="reply_title">Default reply action</string>
     <string name="dark_theme">Dark Theme</string>
     <string name="light_theme">Light Theme</string>
+    <string name="infinity_historic_on">Infinite Historic Able</string>
+    <string name="infinity_historic_off">Infinite Historic Disable</string>
+
+    <!-- Keys Preferences  -->
+    <string name="switch_infinite_historic">infinityLength</string>
+    <string name="seekbar_limit_historic">length</string>
 
 </resources>
