@@ -80,6 +80,7 @@ class SettingsActivity : AppCompatActivity() {
                 HistoricFragment.historicDeleteLimit = (seekbarPref as SeekBarPreference).value
             }
             if (!(prefInfinity as SwitchPreferenceCompat).isChecked) {
+                seekbarPref.value = seekbarPref.max
                 HistoricFragment.historicDeleteLimit = -1
             }
         }

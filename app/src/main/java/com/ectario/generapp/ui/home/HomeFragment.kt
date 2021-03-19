@@ -1,13 +1,15 @@
 package com.ectario.generapp.ui.home
 
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
-import android.content.SharedPreferences
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.widget.TextView
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import com.daimajia.androidanimations.library.Techniques
 import com.daimajia.androidanimations.library.YoYo
@@ -21,9 +23,6 @@ import com.ectario.generapp.tools.getScreenHeight
 import com.ectario.generapp.tools.makeToast
 import com.ectario.generapp.tools.setMargins
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import java.lang.reflect.Type
 
 
 class HomeFragment : Fragment() {
@@ -43,7 +42,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
     }
 
-    private fun instantiation(view : View = this.root){
+    private fun instantiation(view: View = this.root){
 
         mHistoric = loadHistoric(applicationContext)
 
@@ -62,9 +61,10 @@ class HomeFragment : Fragment() {
                     }
                     .playOn(it)
             var wh = WordsHasher(lenghtPasswordArg = mLengthPwd)
-            applicationContext.makeToast(wh.getPasswordHashed())
             passwordTextview.text = wh.getPasswordHashed()
             mHistoric?.add(wh)
+            setClipboard(applicationContext, wh.getPasswordHashed())
+            applicationContext.makeToast("${wh.getPasswordHashed()} copied !")
             saveHistoric(applicationContext, mHistoric)
         }
 
@@ -78,8 +78,9 @@ class HomeFragment : Fragment() {
             override fun onSwipeLeft() {
                 super.onSwipeRight()
                 mLengthPwd--
-                if(mLengthPwd<=0) { mLengthPwd = 0; sizeTextview.text = "Random size" }
-                else sizeTextview!!.text = "size : $mLengthPwd"
+                if (mLengthPwd <= 0) {
+                    mLengthPwd = 0; sizeTextview.text = "Random size"
+                } else sizeTextview!!.text = "size : $mLengthPwd"
             }
 
             override fun onSwipeUp() {
@@ -92,6 +93,16 @@ class HomeFragment : Fragment() {
         })
     }
 
+    private fun setClipboard(context: Context, text: String) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
+            val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as android.text.ClipboardManager
+            clipboard.text = text
+        } else {
+            val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clip = ClipData.newPlainText("$text copied !", text)
+            clipboard.setPrimaryClip(clip)
+        }
+    }
 
 
 }
