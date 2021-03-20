@@ -68,7 +68,7 @@ class HomeFragment : Fragment() {
             saveHistoric(applicationContext, mHistoric)
         }
 
-        view.setOnTouchListener(object : OnSwipeTouchListener(applicationContext) {
+        view.setOnTouchListener(object : OnSwipeTouchListener(applicationContext,20,50) {
             override fun onSwipeRight() {
                 super.onSwipeRight()
                 mLengthPwd++
