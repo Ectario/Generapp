@@ -57,8 +57,14 @@ class FirstPageActivity : AppCompatActivity() {
                             .duration(1000)
                             .playOn(credit_textview)
                 }
-                , 700)
-        first_pageview.setOnClickListener { changingActivity(this, HomePageActivity::class.java) }
+                , 850)
+        handler.postDelayed(
+                {
+                    changingActivity(this, HomePageActivity::class.java) ; finish()
+                },
+                2500
+        )
+        first_pageview.setOnClickListener { changingActivity(this, HomePageActivity::class.java) ; finish()}
     }
 
 
