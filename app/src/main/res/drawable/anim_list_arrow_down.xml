@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:drawable="@drawable/ic_arrow_down_100pc"
+        android:duration="1000"/>
+    <item
+        android:drawable="@drawable/ic_multi_arrow_down_1"
+        android:duration="@integer/arrows" />
+    <item
+        android:drawable="@drawable/ic_multi_arrow_down_1_1"
+        android:duration="@integer/arrows" />
+    <item
+        android:drawable="@drawable/ic_multi_arrow_down_1_2"
+        android:duration="@integer/arrows" />
+    <item
+        android:drawable="@drawable/ic_multi_arrow_down_1_3"
+        android:duration="@integer/arrows" />
+    <item
+        android:drawable="@drawable/ic_multi_arrow_down_2"
+        android:duration="@integer/arrows" />
+    <item
+        android:drawable="@drawable/ic_multi_arrow_down_2_1"
+        android:duration="@integer/arrows" />
+    <item
+        android:drawable="@drawable/ic_multi_arrow_down_2_2"
+        android:duration="@integer/arrows" />
+    <item
+        android:drawable="@drawable/ic_multi_arrow_down_2_3"
+        android:duration="@integer/arrows" />
+    <item
+        android:drawable="@drawable/ic_multi_arrow_down_3"
+        android:duration="@integer/arrows"/>
+    <item
+        android:drawable="@drawable/ic_multi_arrow_down_3_1"
+        android:duration="@integer/arrows"/>
+    <item
+        android:drawable="@drawable/ic_multi_arrow_down_3_2"
+        android:duration="@integer/arrows"/>
+    <item
+        android:drawable="@drawable/ic_multi_arrow_down_3_3"
+        android:duration="@integer/arrows"/>
+    <item
+        android:drawable="@drawable/ic_multi_arrow_down_4"
+        android:duration="@integer/arrows"/>
+    <item
+        android:drawable="@drawable/ic_arrow_down_25pc"
+        android:duration="@integer/arrows"/>
+<!--    <item-->
+<!--        android:drawable="@drawable/empty"-->
+<!--        android:duration="1000"-->
+<!--    />-->
+</animation-list>

@@ -7,6 +7,26 @@
     android:id="@+id/home_page_id"
     tools:context=".ui.home.HomeFragment">
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/advent_pro"
+            android:text="@string/key_words"
+            android:textColor="@color/orangePastel" />
+        <ImageView
+            android:id="@+id/arrowsId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            />
+    </RelativeLayout>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/generationBtnId"
         android:layout_width="wrap_content"

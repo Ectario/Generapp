@@ -3,11 +3,14 @@ package com.ectario.generapp.ui.home
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.graphics.drawable.AnimationDrawable
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
@@ -18,10 +21,7 @@ import com.ectario.generapp.R
 import com.ectario.generapp.hash.WordsHasher
 import com.ectario.generapp.savemanagement.loadHistoric
 import com.ectario.generapp.savemanagement.saveHistoric
-import com.ectario.generapp.tools.OnSwipeTouchListener
-import com.ectario.generapp.tools.getScreenHeight
-import com.ectario.generapp.tools.makeToast
-import com.ectario.generapp.tools.setMargins
+import com.ectario.generapp.tools.*
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
@@ -31,6 +31,7 @@ class HomeFragment : Fragment() {
     private val mMARGINTOP_COEF = 0.25f
     private var mLengthPwd = 0
     private var mHistoric : ArrayList<WordsHasher?>? = null
+    private lateinit var arrowsAnim : AnimationDrawable
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         root = inflater.inflate(R.layout.fragment_home, container, false)
@@ -46,10 +47,19 @@ class HomeFragment : Fragment() {
 
         mHistoric = loadHistoric(applicationContext)
 
+        var arrows = view.findViewById<ImageView>(R.id.arrowsId)
         var sizeTextview = view.findViewById<TextView>(R.id.sizeId)
         var generationButton = view.findViewById<FloatingActionButton>(R.id.generationBtnId)
         var passwordTextview = view.findViewById<TextView>(R.id.generatePassword)
         sizeTextview.setMargins(top = (getScreenHeight() * mMARGINTOP_COEF).toInt())
+
+        arrows.setBackgroundResource(R.drawable.anim_list_arrow_down)
+        arrowsAnim = arrows.background as AnimationDrawable
+//
+//        val arrowsDuration = resources.getInteger(R.integer.arrows)
+//        arrowsAnim.setEnterFadeDuration(arrowsDuration/2)
+//        arrowsAnim.setExitFadeDuration(arrowsDuration)
+        arrowsAnim.start()
 
         generationButton.setOnClickListener {
             YoYo.with(Techniques.RotateOut)
@@ -103,6 +113,5 @@ class HomeFragment : Fragment() {
             clipboard.setPrimaryClip(clip)
         }
     }
-
 
 }

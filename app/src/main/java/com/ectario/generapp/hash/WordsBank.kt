@@ -7,10 +7,8 @@ open class WordsBank {
     constructor(listOfWords: ArrayList<String?>? = null, lenghtPasswordArg : Int = 0){
         var lengthPassword = lenghtPasswordArg
         var cpt = 0
-        if (listOfWords != null) {
-            listOfWords.forEach {
-                if (it != null) cpt += it.length
-            }
+        listOfWords?.forEach {
+            if (it != null) cpt += it.length
         }
         if (lengthPassword< cpt) lengthPassword = cpt
         this.lengthWordsBank = lengthPassword
@@ -18,6 +16,10 @@ open class WordsBank {
     }
 
     fun getLength() : Int {
-        return this.lengthWordsBank
+        return lengthWordsBank
+    }
+
+    fun getListOfWords() : ArrayList<String?>? {
+        return list
     }
 }

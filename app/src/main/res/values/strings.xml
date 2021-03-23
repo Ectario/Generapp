@@ -32,5 +32,6 @@
     <!-- Keys Preferences  -->
     <string name="switch_infinite_historic">infinityLength</string>
     <string name="seekbar_limit_historic">length</string>
+    <string name="key_words">Key Words</string>
 
 </resources>

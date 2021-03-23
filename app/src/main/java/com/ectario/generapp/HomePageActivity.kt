@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -18,7 +17,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.ectario.generapp.tools.changingActivity
 import com.google.android.material.navigation.NavigationView
-import com.ectario.generapp.ui.home.HomeFragment as HomeFragment
 
 
 class HomePageActivity : AppCompatActivity() {
