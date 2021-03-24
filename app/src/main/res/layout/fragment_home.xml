@@ -13,17 +13,20 @@
         android:layout_gravity="center_horizontal">
 
         <TextView
+            android:id="@+id/key_words_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
             android:fontFamily="@font/advent_pro"
             android:text="@string/key_words"
             android:textColor="@color/orangePastel" />
         <ImageView
             android:id="@+id/arrowsId"
+            android:layout_below="@id/key_words_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="5dp"
             android:layout_centerHorizontal="true"
             />
     </RelativeLayout>
